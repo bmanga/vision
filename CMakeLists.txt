@@ -13,6 +13,9 @@ endif()
 find_package(Python3 COMPONENTS Development)
 find_package(Torch REQUIRED)
 
+set_property(TARGET torch_cuda PROPERTY INTERFACE_COMPILE_OPTIONS "")
+set_property(TARGET torch_cpu PROPERTY INTERFACE_COMPILE_OPTIONS "")
+
 file(GLOB HEADERS torchvision/csrc/*.h)
 file(GLOB OPERATOR_SOURCES torchvision/csrc/cpu/*.h torchvision/csrc/cpu/*.cpp torchvision/csrc/ops.cpp)
 if(WITH_CUDA)
